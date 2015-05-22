@@ -1,0 +1,14 @@
+<div class="containe">
+	<div class="row">
+		<h3>Dale tu opinión</h3>
+		<form action="pro/insertar/guardar_lik.php?lik={url}" method="POST" class="col-md-6"><button value='+' name="like" class="btn btn-default">+</button></form>
+		<form action="pro/insertar/guardar_lik.php?lik={url}" method="POST" class="col-md-6"><button value='-' name="like" class="btn btn-default">-</button></form>
+	</div>
+	<form action="pro/insertar/guardar_comentario.php?comt={url}" method="POST" class="row">
+		<div class="col-md-11">
+			<h3>Comentar</h3>
+			<textarea name="comentario" class="form-control">Comentar</textarea><br>
+			<button class="btn btn-default">Comentar</button>
+		</div>
+	</form>
+</div>
