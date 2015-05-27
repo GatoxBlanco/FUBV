@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-05-2015 a las 20:04:31
+-- Tiempo de generación: 27-05-2015 a las 06:50:56
 -- Versión del servidor: 5.6.24-0ubuntu2
 -- Versión de PHP: 5.6.4-4ubuntu6
 
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
   `comentario` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `id_persona` int(11) NOT NULL,
   `id_tema` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `comentarios`
@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
 INSERT INTO `comentarios` (`id`, `comentario`, `id_persona`, `id_tema`) VALUES
 (2, 'Me gusta este tema\r\n', 3, 10),
 (4, 'Que tal como esta el planeta', 3, 9),
-(5, 'Ese tipo esta loco.', 3, 12);
+(5, 'Ese tipo esta loco.', 3, 12),
+(7, 'Muy buen articulo', 3, 12);
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,8 @@ CREATE TABLE IF NOT EXISTS `persona_buen_tema` (
 INSERT INTO `persona_buen_tema` (`id_tema`, `id_persona`) VALUES
 (8, 3),
 (10, 3),
-(12, 3);
+(12, 3),
+(14, 3);
 
 -- --------------------------------------------------------
 
@@ -123,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `persona_mal_tema` (
 --
 
 INSERT INTO `persona_mal_tema` (`id_tema`, `id_persona`) VALUES
-(10, 3);
+(10, 3),
+(12, 3);
 
 -- --------------------------------------------------------
 
@@ -136,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `tema` (
   `titulo` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `pregunta` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
   `id_persona` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tema`
@@ -147,7 +150,61 @@ INSERT INTO `tema` (`id`, `titulo`, `pregunta`, `id_persona`) VALUES
 (9, 'Comer es sano', 'La comida del planeta es sana?', 3),
 (10, 'PeloMono', 'QUE es eso?', 4),
 (11, 'Otro tema mas que vamos hablar ', 'No se que pregunta podemos hacer el publico', 3),
-(12, 'Â¿Porque geraldo lava la ropa?', 'Es una pregunta que tengo porque fernando rosillo quiere aprender de sus tÃ©cnica y como le da pena usar su cuenta me mando a preguntar', 3);
+(12, 'Â¿Porque geraldo lava la ropa?', 'Es una pregunta que tengo porque fernando rosillo quiere aprender de sus tÃ©cnica y como le da pena usar su cuenta me mando a preguntar', 3),
+(13, 'Cuando terminare esto?', 'Cuando comenzare a terminar esto?', 3),
+(14, 'Â¿Puedo viajar a caracas?', 'Sera que hay pasaje para caracas?', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tema_simple`
+--
+
+CREATE TABLE IF NOT EXISTS `tema_simple` (
+`id` int(11) NOT NULL,
+  `titulo` varchar(500) NOT NULL,
+  `option_uno` varchar(200) NOT NULL,
+  `option_dos` varchar(200) NOT NULL,
+  `id_pers` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tema_simple`
+--
+
+INSERT INTO `tema_simple` (`id`, `titulo`, `option_uno`, `option_dos`, `id_pers`) VALUES
+(1, 'Nuevo titulo', 'Si', 'No', '3');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tema_simple_ma`
+--
+
+CREATE TABLE IF NOT EXISTS `tema_simple_ma` (
+`id` int(11) NOT NULL,
+  `idTema` varchar(300) NOT NULL,
+  `idPersona` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tema_simple_po`
+--
+
+CREATE TABLE IF NOT EXISTS `tema_simple_po` (
+`id` int(11) NOT NULL,
+  `idTema` varchar(300) NOT NULL,
+  `idPersona` varchar(300) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tema_simple_po`
+--
+
+INSERT INTO `tema_simple_po` (`id`, `idTema`, `idPersona`) VALUES
+(1, '1', '3');
 
 --
 -- Índices para tablas volcadas
@@ -196,6 +253,24 @@ ALTER TABLE `tema`
  ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `titulo` (`titulo`), ADD KEY `id_persona` (`id_persona`);
 
 --
+-- Indices de la tabla `tema_simple`
+--
+ALTER TABLE `tema_simple`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tema_simple_ma`
+--
+ALTER TABLE `tema_simple_ma`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tema_simple_po`
+--
+ALTER TABLE `tema_simple_po`
+ ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -203,7 +278,7 @@ ALTER TABLE `tema`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `persona`
 --
@@ -213,7 +288,22 @@ MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 -- AUTO_INCREMENT de la tabla `tema`
 --
 ALTER TABLE `tema`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT de la tabla `tema_simple`
+--
+ALTER TABLE `tema_simple`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tema_simple_ma`
+--
+ALTER TABLE `tema_simple_ma`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tema_simple_po`
+--
+ALTER TABLE `tema_simple_po`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
