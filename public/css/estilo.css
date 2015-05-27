@@ -1,0 +1,55 @@
+body{
+	background-color: #F2F0F0;
+}
+
+header{
+	background-color: white;
+	padding: 1%;
+}
+
+header img{
+	width: 22%;
+}
+
+article{
+	padding: 10px;
+	width: 93%;
+}
+article a{
+	text-align: none;
+	color: black;
+}
+
+.cont{
+	background-color: white;
+	border-radius: 6px;
+	box-shadow: 0px  0px 1px black;
+	margin-top: 2%;
+	padding: 10px;
+}
+
+samp{
+	font-size: 12px;
+}
+
+
+.pa_menu{
+	background-color: white;
+	border-radius: 5px 0px 0px 5px;
+	margin-bottom: 1%;
+	margin-top: 1%;
+	padding: 8px;
+}
+
+.mv3{/***PAra mover el menu de post*/
+	margin-left:3%;
+}
+@media (max-width: 600px){
+	header img{
+		margin-left: -60%;
+		width: 180px;
+	}
+	.mv3{
+		margin: 0%;
+	}
+}

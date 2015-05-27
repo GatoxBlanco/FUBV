@@ -49,5 +49,30 @@ class tema extends dbTema{
 		}
 	}
 
+
+	function tema_simple($titulo,$pos,$neg,$id_user){
+		#PARA QUE GUARDE EL TEMA SIMPLE
+		if (empty($titulo) && empty($pos) && empty($neg)) {
+			echo "<script>alert('Los campos estan vacios'); location.href='../../pregunta_simple.php';</script>";
+		}else{
+			dbTema::db_tema_simple($titulo,$pos,$neg,$id_user);
+			echo "<script>alert('Listo'); location.href='../../pregunta_simple.php';</script>";	
+		}
+	}
+
+	function g_tema_Simple_P_M($idTema,$resul,$user){
+	
+		#PARA QE GUARDE LOS POSITIVOS Y NEGATIVOS
+		if ($resul == "po") {
+			# Positivo
+			$table="tema_simple_po";
+			dbTema::guardar_simple_po_ne($idTema,$user,$table);
+		}elseif ($resul == "ne") {
+			# negativo.
+			$table="tema_simple_ma";
+			dbTema::guardar_simple_po_ne($idTema,$user,$table);
+		}
+		echo "<script>alert('Listo');location.href='../../post_simple.php?w=".$idTema."';</script>";
+	}	
 }
 ?>

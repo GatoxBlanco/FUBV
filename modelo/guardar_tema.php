@@ -21,5 +21,12 @@ class dbTema extends conex{
 		mysql_query("insert into persona_mal_tema(id_tema,id_persona) values('".$lkTema."','".$iduser."') ");
 	}	
 
+	function db_tema_simple($titulo,$pos,$neg,$id_user){
+		mysql_query("insert into tema_simple(titulo,option_uno,option_dos,id_pers) values('".$titulo."','".$pos."','".$neg."','".$id_user."') ");
+	}
+
+	function guardar_simple_po_ne($idTema,$user,$table){ #PARA GUARDAR EL TEMA LOS POSITIVOS Y LOS NEGATIVOS
+		mysql_query("insert into $table(idTema,idPersona) values('".$idTema."','".$user."') ");
+	}
 }
 ?>
